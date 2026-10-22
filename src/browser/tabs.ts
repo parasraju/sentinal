@@ -1,4 +1,5 @@
 import type { PageEvidence } from "../shared/types";
+import { getActionApi, getExtensionApi } from "./extension-api";
 
 export function isAssessableUrl(url: string | undefined): url is string {
   if (!url) return false;
@@ -11,13 +12,16 @@ export function isAssessableUrl(url: string | undefined): url is string {
 }
 
 export async function getActiveTab(): Promise<chrome.tabs.Tab | null> {
-  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+  const api = getExtensionApi();
+  if (!api?.tabs) return null;
+  const tabs = await api.tabs.query({ active: true, currentWindow: true });
   return tabs[0] ?? null;
 }
 
 export async function getTab(tabId: number): Promise<chrome.tabs.Tab | null> {
   try {
-    return await chrome.tabs.get(tabId);
+    const api = getExtensionApi();
+    return api?.tabs ? await api.tabs.get(tabId) : null;
   } catch {
     return null;
   }
@@ -25,7 +29,9 @@ export async function getTab(tabId: number): Promise<chrome.tabs.Tab | null> {
 
 export async function injectContentScript(tabId: number): Promise<boolean> {
   try {
-    await chrome.scripting.executeScript({
+    const api = getExtensionApi();
+    if (!api?.scripting) return false;
+    await api.scripting.executeScript({
       target: { tabId },
       files: ["content/content-script.js"],
     });
@@ -47,7 +53,9 @@ export async function requestPageEvidence(
 ): Promise<EvidenceRequestResult> {
   const ask = async (): Promise<PageEvidence | null> => {
     try {
-      const response = (await chrome.tabs.sendMessage(tabId, { type: "REQUEST_EVIDENCE" })) as
+      const api = getExtensionApi();
+      if (!api?.tabs) return null;
+      const response = (await api.tabs.sendMessage(tabId, { type: "REQUEST_EVIDENCE" })) as
         | { evidence?: PageEvidence }
         | undefined;
       return response?.evidence ?? null;
@@ -77,9 +85,11 @@ export async function requestPageEvidence(
 
 export async function setBadge(tabId: number, text: string, color: string, title: string): Promise<void> {
   try {
-    await chrome.action.setBadgeBackgroundColor({ tabId, color });
-    await chrome.action.setBadgeText({ tabId, text });
-    await chrome.action.setTitle({ tabId, title });
+    const action = getActionApi();
+    if (!action) return;
+    await action.setBadgeBackgroundColor({ tabId, color });
+    await action.setBadgeText({ tabId, text });
+    await action.setTitle({ tabId, title });
   } catch {
     // Tab may have closed between assessment and badge update.
   }
@@ -87,7 +97,9 @@ export async function setBadge(tabId: number, text: string, color: string, title
 
 export async function clearBadge(tabId: number): Promise<void> {
   try {
-    await chrome.action.setBadgeText({ tabId, text: "" });
+    const action = getActionApi();
+    if (!action) return;
+    await action.setBadgeText({ tabId, text: "" });
   } catch {
     // Ignore.
   }
