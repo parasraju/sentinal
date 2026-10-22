@@ -8,6 +8,8 @@ import {
 } from "../shared/constants";
 import type { Settings } from "../shared/types";
 import { normalizeAllowlistDomain, normalizeSettings, sanitizeHostname } from "../shared/validation";
+import { getSessionStorage } from "../browser/extension-api";
+import { clearMemorySnapshots } from "./snapshots";
 
 export async function getSettings(): Promise<Settings> {
   const stored = await chrome.storage.local.get(SETTINGS_KEY);
@@ -67,11 +69,16 @@ export async function clearHistoryAndReputation(): Promise<void> {
 export async function clearAllLocalData(): Promise<void> {
   const all = await chrome.storage.local.get(null);
   const snapshotKeys = Object.keys(all).filter((key) => key.startsWith(SNAPSHOT_KEY_PREFIX));
-  const session = chrome.storage.session;
-  if (session) {
-    const sessionAll = await session.get(null);
-    const sessionKeys = Object.keys(sessionAll);
-    if (sessionKeys.length > 0) await session.remove(sessionKeys);
+  clearMemorySnapshots();
+  try {
+    const session = getSessionStorage();
+    if (session) {
+      const sessionAll = await session.get(null);
+      const sessionKeys = Object.keys(sessionAll);
+      if (sessionKeys.length > 0) await session.remove(sessionKeys);
+    }
+  } catch {
+    // Session storage is optional and may reject in Firefox or after worker restart.
   }
   await chrome.storage.local.remove([SETTINGS_KEY, HISTORY_KEY, REPUTATION_CACHE_KEY, DELETED_COOKIE_COUNT_KEY]);
   if (snapshotKeys.length > 0) await chrome.storage.local.remove(snapshotKeys);
