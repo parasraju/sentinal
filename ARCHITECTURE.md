@@ -20,6 +20,8 @@ Sentinel is a Manifest V3 extension with local-first, evidence-based processing.
 - `declarativeNetRequest`, `declarativeNetRequestFeedback`: enable bundled tracker rules and report matched-rule counts where Chromium exposes them.
 - HTTP(S) host access: required for site-wide content metadata and DNR matching. Browser-internal and local-file pages remain unsupported.
 
+The default `manifest.json` is the Chrome MV3 build and keeps a service worker because Chrome versions before 121 reject MV3 background `scripts`. Firefox and Safari builds should use the packaged `manifest.firefox.json` variant, which selects the same bundled module as an event-page background script. DNR feedback is optional in the default manifest because matched-rule diagnostics are non-essential and may be unavailable in other browsers.
+
 ## Scoring
 
 The score starts at 100, applies each stable finding penalty once, clamps to 0-100, and exposes the factors that drove the result. HTTPS contributes explanatory evidence but no safety guarantee. Missing evidence is represented as unavailable or unknown.

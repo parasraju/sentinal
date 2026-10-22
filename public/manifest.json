@@ -36,9 +36,9 @@
     "scripting",
     "cookies",
     "webNavigation",
-    "declarativeNetRequest",
-    "declarativeNetRequestFeedback"
+    "declarativeNetRequest"
   ],
+  "optional_permissions": ["declarativeNetRequestFeedback"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "content_scripts": [
     {
