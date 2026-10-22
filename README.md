@@ -66,14 +66,14 @@ Upgraded using Reverse Engineering Analysis (REA) of leading open-source securit
 
 ---
 
-## Installation & Testing in Chrome
+## Installation & Testing in Chromium Browsers
 
 1. **Build the extension:**
    ```powershell
    npm install
    npm run build
    ```
-2. **Load in Chrome / Brave / Edge:**
+2. **Load in Chrome / Brave / Edge / other Chromium browsers:**
    - Open your browser and navigate to `chrome://extensions/`.
    - Toggle **Developer mode** in the top-right corner.
    - Click **Load unpacked**.
@@ -82,6 +82,8 @@ Upgraded using Reverse Engineering Analysis (REA) of leading open-source securit
    - The Sentinel shield icon will appear in your browser toolbar.
    - Open any website and click the Sentinel icon to view the real-time trust score, domain intelligence, security headers, and findings.
    - After rebuilding, return to `chrome://extensions/`, click **Reload** on Sentinel, then refresh the website tab. An older unpacked bundle can continue showing the previous score logic.
+
+The production bundle uses Manifest V3 service workers and targets Chromium 116 or newer. The runtime now tolerates missing optional APIs, including session storage, action badge APIs, and declarative rule feedback. Firefox requires a separate browser-specific manifest because Firefox does not use the Chromium `background.service_worker` manifest shape.
 
 ### Score behavior
 
