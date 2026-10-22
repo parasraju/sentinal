@@ -1,0 +1,36 @@
+{
+  "analytics": [
+    "google-analytics.com",
+    "googletagmanager.com",
+    "mixpanel.com",
+    "amplitude.com",
+    "segment.io"
+  ],
+  "advertising": [
+    "doubleclick.net",
+    "googlesyndication.com",
+    "criteo.com",
+    "taboola.com",
+    "outbrain.com"
+  ],
+  "social": [
+    "connect.facebook.net",
+    "platform.twitter.com",
+    "platform.linkedin.com"
+  ],
+  "session_replay": [
+    "hotjar.com",
+    "fullstory.com",
+    "mouseflow.com"
+  ],
+  "fingerprinting": [
+    "fingerprint.com",
+    "fingerprintjs.com"
+  ],
+  "strict": [
+    "adnxs.com",
+    "adsrvr.org",
+    "scorecardresearch.com",
+    "quantserve.com"
+  ]
+}

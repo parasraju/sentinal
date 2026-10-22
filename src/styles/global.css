@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-ink-950 text-mist-100 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgba(45, 212, 191, 0.28);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(45, 212, 191, 0.8);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #24344f;
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-ink-700/80 bg-ink-900/90 shadow-panel;
+  }
+
+  .panel-soft {
+    @apply rounded-xl border border-ink-700/60 bg-ink-850/70;
+  }
+
+  .label {
+    @apply text-[11px] font-medium uppercase tracking-[0.14em] text-mist-400;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-sentinel px-3 py-2 text-sm font-semibold text-ink-950 transition hover:bg-teal-300 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink-600 bg-ink-800 px-3 py-2 text-sm font-medium text-mist-100 transition hover:border-ink-600 hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .button-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-2 py-2 text-sm text-mist-300 transition hover:bg-ink-800 hover:text-mist-100;
+  }
+
+  .button-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-danger/40 bg-danger/10 px-3 py-2 text-sm font-semibold text-danger transition hover:bg-danger/20 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .row-hover {
+    @apply transition hover:border-ink-600 hover:bg-ink-850;
+  }
+}

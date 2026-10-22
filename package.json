@@ -1,0 +1,49 @@
+{
+  "name": "sentinel-trust-guardian",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sentinel — local-first website trust and privacy guardian (Chrome MV3).",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/generate-assets.mjs && vite build --watch",
+    "build": "node scripts/generate-assets.mjs && tsc --noEmit && vite build && vite build --config vite.content.config.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "e2e": "playwright test",
+    "serve:fixtures": "node scripts/serve-fixtures.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.454.0",
+    "punycode": "^2.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tldts": "^6.1.58"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@playwright/test": "^1.48.2",
+    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/chrome": "^0.0.278",
+    "@types/node": "^22.8.6",
+    "@types/punycode": "^2.1.4",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.11.0",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
+  }
+}

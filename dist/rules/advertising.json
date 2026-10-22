@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "doubleclick.net"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "googlesyndication.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "criteo.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "taboola.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "outbrain.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  }
+]

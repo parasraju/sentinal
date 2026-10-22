@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "connect.facebook.net"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "platform.twitter.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "platform.linkedin.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  }
+]

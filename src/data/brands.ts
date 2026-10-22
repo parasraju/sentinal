@@ -1,0 +1,238 @@
+export interface BrandDefinition {
+  id: string;
+  name: string;
+  tokens: string[];
+  domains: string[];
+}
+
+/**
+ * A deliberately small, maintained list for the MVP. Tokens are matched against
+ * registrable-domain labels, never used as proof of ownership. Multi-label
+ * domains (amazon.co.uk) are checked with tldts before any impersonation logic.
+ */
+export const BRANDS: BrandDefinition[] = [
+  {
+    id: "amazon",
+    name: "Amazon",
+    tokens: ["amazon"],
+    domains: [
+      "amazon.com",
+      "amazon.co.uk",
+      "amazon.de",
+      "amazon.fr",
+      "amazon.es",
+      "amazon.it",
+      "amazon.ca",
+      "amazon.com.au",
+      "amazon.in",
+      "amazon.co.jp",
+      "amazonaws.com",
+    ],
+  },
+  {
+    id: "apple",
+    name: "Apple",
+    tokens: ["apple", "icloud"],
+    domains: ["apple.com", "icloud.com", "appleid.apple.com"],
+  },
+  {
+    id: "google",
+    name: "Google",
+    tokens: ["google", "gmail"],
+    domains: [
+      "google.com",
+      "google.co.uk",
+      "google.de",
+      "google.fr",
+      "google.es",
+      "google.it",
+      "google.ca",
+      "google.com.au",
+      "google.co.jp",
+      "googleapis.com",
+      "googleusercontent.com",
+      "gstatic.com",
+      "youtube.com",
+    ],
+  },
+  {
+    id: "microsoft",
+    name: "Microsoft",
+    tokens: ["microsoft", "outlook", "office365", "onedrive"],
+    domains: [
+      "microsoft.com",
+      "microsoftonline.com",
+      "live.com",
+      "outlook.com",
+      "office.com",
+      "office365.com",
+      "onedrive.com",
+      "sharepoint.com",
+      "azure.com",
+      "azurewebsites.net",
+      "bing.com",
+      "msn.com",
+      "xbox.com",
+    ],
+  },
+  {
+    id: "paypal",
+    name: "PayPal",
+    tokens: ["paypal"],
+    domains: ["paypal.com", "paypal.me", "paypalobjects.com"],
+  },
+  {
+    id: "netflix",
+    name: "Netflix",
+    tokens: ["netflix"],
+    domains: ["netflix.com", "nflxext.com", "nflximg.net", "nflxvideo.net"],
+  },
+  {
+    id: "meta",
+    name: "Meta",
+    tokens: ["facebook", "instagram", "whatsapp"],
+    domains: ["facebook.com", "fb.com", "instagram.com", "whatsapp.com", "messenger.com", "meta.com", "fbcdn.net"],
+  },
+  {
+    id: "coinbase",
+    name: "Coinbase",
+    tokens: ["coinbase"],
+    domains: ["coinbase.com", "coinbase.com.au"],
+  },
+  {
+    id: "binance",
+    name: "Binance",
+    tokens: ["binance"],
+    domains: ["binance.com", "binance.us"],
+  },
+  {
+    id: "steam",
+    name: "Steam",
+    tokens: ["steam", "steampowered"],
+    domains: ["steampowered.com", "steamcommunity.com", "steamstatic.com"],
+  },
+  {
+    id: "dropbox",
+    name: "Dropbox",
+    tokens: ["dropbox"],
+    domains: ["dropbox.com", "dropboxusercontent.com"],
+  },
+  {
+    id: "adobe",
+    name: "Adobe",
+    tokens: ["adobe"],
+    domains: ["adobe.com", "adobelogin.com", "typekit.net"],
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    tokens: ["linkedin"],
+    domains: ["linkedin.com", "licdn.com"],
+  },
+  {
+    id: "spotify",
+    name: "Spotify",
+    tokens: ["spotify"],
+    domains: ["spotify.com", "scdn.co", "spotifycdn.com"],
+  },
+  {
+    id: "discord",
+    name: "Discord",
+    tokens: ["discord"],
+    domains: ["discord.com", "discordapp.com", "discord.gg"],
+  },
+  {
+    id: "telegram",
+    name: "Telegram",
+    tokens: ["telegram"],
+    domains: ["telegram.org", "t.me", "telegram.me"],
+  },
+  {
+    id: "github",
+    name: "GitHub",
+    tokens: ["github"],
+    domains: ["github.com", "githubusercontent.com", "githubassets.com", "github.io"],
+  },
+  {
+    id: "chase",
+    name: "Chase",
+    tokens: ["chase"],
+    domains: ["chase.com", "jpmorgan.com", "jpmorganchase.com"],
+  },
+  {
+    id: "bankofamerica",
+    name: "Bank of America",
+    tokens: ["bankofamerica"],
+    domains: ["bankofamerica.com", "bofa.com"],
+  },
+  {
+    id: "wellsfargo",
+    name: "Wells Fargo",
+    tokens: ["wellsfargo"],
+    domains: ["wellsfargo.com"],
+  },
+  {
+    id: "dhl",
+    name: "DHL",
+    tokens: ["dhl"],
+    domains: ["dhl.com", "dhl.de", "dhlparcel.com"],
+  },
+  {
+    id: "fedex",
+    name: "FedEx",
+    tokens: ["fedex"],
+    domains: ["fedex.com"],
+  },
+  {
+    id: "usps",
+    name: "USPS",
+    tokens: ["usps"],
+    domains: ["usps.com"],
+  },
+  {
+    id: "shopify",
+    name: "Shopify",
+    tokens: ["shopify"],
+    domains: ["shopify.com", "myshopify.com", "shopifycdn.com"],
+  },
+  {
+    id: "stripe",
+    name: "Stripe",
+    tokens: ["stripe"],
+    domains: ["stripe.com", "stripe.network"],
+  },
+];
+
+/** Hosting platforms where the brand token can legitimately appear in a subdomain. */
+export const HOSTING_DOMAINS: string[] = [
+  "github.io",
+  "githubpages.io",
+  "gitlab.io",
+  "netlify.app",
+  "netlify.com",
+  "vercel.app",
+  "web.app",
+  "firebaseapp.com",
+  "pages.dev",
+  "workers.dev",
+  "blogspot.com",
+  "wordpress.com",
+  "wixsite.com",
+  "squarespace.com",
+  "myshopify.com",
+  "azurewebsites.net",
+  "herokuapp.com",
+  "cloudfront.net",
+  "amazonaws.com",
+  "googleusercontent.com",
+  "weebly.com",
+  "tumblr.com",
+  "substack.com",
+  "notion.site",
+  "carrd.co",
+  "glitch.me",
+  "onrender.com",
+  "surge.sh",
+  "readthedocs.io",
+  "pages.github.com",
+];

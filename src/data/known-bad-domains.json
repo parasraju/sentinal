@@ -1,0 +1,30 @@
+{
+  "version": "demo-2026-01",
+  "description": "Bundled demonstration reputation list. All entries use reserved example/test domains and cannot resolve on the public internet. Real deployments should replace this with a reviewed feed through the ReputationProvider interface.",
+  "entries": [
+    {
+      "domain": "secure-login-verify.example",
+      "label": "Demo credential-phishing domain",
+      "severity": "critical",
+      "source": "local-list"
+    },
+    {
+      "domain": "account-verify.example",
+      "label": "Demo account-verification phishing domain",
+      "severity": "critical",
+      "source": "local-list"
+    },
+    {
+      "domain": "sentinel-phish-test.example",
+      "label": "Sentinel test phishing domain",
+      "severity": "critical",
+      "source": "local-list"
+    },
+    {
+      "domain": "malware-download.example",
+      "label": "Demo malware distribution domain",
+      "severity": "critical",
+      "source": "local-list"
+    }
+  ]
+}

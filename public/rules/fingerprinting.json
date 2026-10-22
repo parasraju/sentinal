@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "fingerprint.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "fingerprintjs.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "xmlhttprequest",
+        "sub_frame",
+        "image",
+        "ping"
+      ]
+    }
+  }
+]
